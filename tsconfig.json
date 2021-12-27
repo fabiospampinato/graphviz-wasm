@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowJs": true,
     "alwaysStrict": true,
+    "checkJs": false,
     "declaration": true,
     "emitDecoratorMetadata": true,
     "esModuleInterop": true,
