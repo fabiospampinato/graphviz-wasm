@@ -16,7 +16,7 @@ describe ( 'Graphviz', it => {
 
     await Graphviz.loadWASM ();
 
-    const result = await Graphviz.layout ( input );
+    const result = Graphviz.layout ( input );
 
     t.is ( result, output );
 

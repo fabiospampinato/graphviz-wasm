@@ -27,7 +27,7 @@ const dot = `
   }
 `;
 
-const svg = await graphviz.layout ( dot );
+const svg = graphviz.layout ( dot );
 ```
 
 This is the interface of the `layout` method:
@@ -37,7 +37,7 @@ type Engine = 'circo' | 'dot' | 'fdp' | 'neato' | 'osage' | 'patchwork' | 'sfdp'
 
 type Format = 'dot_json' | 'dot' | 'json' | 'plain-ext' | 'plain' | 'svg' | 'xdot_json';
 
-type layout = ( source: string, format: Format = 'svg', engine: Engine = 'dot' ) => Promise<string>;
+type layout = ( source: string, format: Format = 'svg', engine: Engine = 'dot' ) => string;
 ```
 
 ## License
