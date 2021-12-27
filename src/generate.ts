@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import decode from 'decode-base64';
-import * as wrapper from '@hpcc-js/wasm/dist/graphviz.js' //TODO: Replace this with custom bindings & wrapper optimized for speed & size
+import * as wrapper from '../graphviz/wrapper.js'; //TODO: Replace this with custom bindings & wrapper optimized for speed & size
 import {DEFAULT_ENGINE, DEFAULT_FORMAT} from './constants';
 import {Engine, Format} from './types';
 
@@ -26,9 +26,9 @@ const generate = ( GRAPHVIZ_BASE64: string ) => {
 
       const GRAPHVIZ_BUFFER = decode ( GRAPHVIZ_BASE64 );
 
-      await wrapper.graphvizVersion ( '', GRAPHVIZ_BUFFER );
+      await wrapper['graphvizVersion']( '', GRAPHVIZ_BUFFER );
 
-      instance = wrapper.graphviz;
+      instance = wrapper['graphviz'];
 
     },
 
