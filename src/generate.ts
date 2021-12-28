@@ -2,6 +2,7 @@
 /* IMPORT */
 
 import decode from 'decode-base64';
+import once from 'once';
 import {DEFAULT_ENGINE, DEFAULT_FORMAT} from './constants';
 import {wrapper} from './generate.wrapper';
 import {Engine, Format} from './types';
@@ -20,15 +21,13 @@ const generate = ( GRAPHVIZ_BASE64: string ) => {
 
     /* LIFECYCLE API */
 
-    loadWASM: async (): Promise<void> => {
-
-      if ( instance ) return;
+    loadWASM: once (async (): Promise<void> => {
 
       const GRAPHVIZ_BUFFER = decode ( GRAPHVIZ_BASE64 );
 
       instance = await wrapper ({ wasmBinary: GRAPHVIZ_BUFFER });
 
-    },
+    }),
 
     /* API */
 
