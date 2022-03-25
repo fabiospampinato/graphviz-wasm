@@ -32,7 +32,7 @@
     "dot"
   ],
   "dependencies": {
-    "decode-base64": "^1.0.0",
+    "decode-base64": "^2.0.0",
     "once": "npm:@fabiospampinato/once@^1.0.0"
   },
   "devDependencies": {
