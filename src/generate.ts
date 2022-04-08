@@ -3,29 +3,36 @@
 
 import decode from 'decode-base64';
 import once from 'once';
+import wrapper from '../graphviz/wrapper.js';
 import {DEFAULT_ENGINE, DEFAULT_FORMAT} from './constants';
-import {wrapper} from './generate.wrapper';
-import {Engine, Format} from './types';
+import type {Engine, Format} from './types';
 
 /* MAIN */
 
 const generate = ( GRAPHVIZ_BASE64: string ) => {
 
-  /* HELPERS */
-
-  let instance: any;
-
-  /* GRAPHVIZ */
-
-  return {
+  const Graphviz = {
 
     /* LIFECYCLE API */
 
-    loadWASM: once (async (): Promise<void> => {
+    loadWASM: once ( async (): Promise<void> => {
 
       const GRAPHVIZ_BUFFER = decode ( GRAPHVIZ_BASE64 );
 
-      instance = await wrapper ({ wasmBinary: GRAPHVIZ_BUFFER });
+      const instance = await wrapper ({ wasmBinary: GRAPHVIZ_BUFFER });
+
+      Graphviz.layout = ( source: string, format: Format = DEFAULT_FORMAT, engine: Engine = DEFAULT_ENGINE ): string => {
+
+        const graphviz = new instance.Graphviz ();
+        const result = graphviz.layout ( source, format, engine );
+
+        instance.destroy ( graphviz );
+
+        if ( !result ) throw new Error ( instance.Graphviz.prototype.lastError () );
+
+        return result;
+
+      };
 
     }),
 
@@ -33,20 +40,13 @@ const generate = ( GRAPHVIZ_BASE64: string ) => {
 
     layout: ( source: string, format: Format = DEFAULT_FORMAT, engine: Engine = DEFAULT_ENGINE ): string => {
 
-      if ( !instance ) throw new Error ( '[graphviz] You need to call and await "graphviz.loadWASM" first' );
-
-      const graphviz = new instance.Graphviz ();
-      const result = graphviz.layout ( source, format, engine );
-
-      instance.destroy ( graphviz );
-
-      if ( !result ) throw new Error ( instance.Graphviz.prototype.lastError () );
-
-      return result;
+      throw new Error ( '[graphviz] You need to call and await "graphviz.loadWASM" first' );
 
     }
 
   };
+
+  return Graphviz;
 
 };
 

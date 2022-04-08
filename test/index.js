@@ -1,9 +1,9 @@
 
 /* IMPORT */
 
-const {describe} = require ( 'fava' );
-const fs = require ( 'fs' );
-const {default: Graphviz} = require ( '../dist/src' );
+import {describe} from 'fava';
+import fs from 'node:fs';
+import Graphviz from '../dist/index.js';
 
 /* MAIN */
 

@@ -2,6 +2,7 @@
 /* MAIN */
 
 const DEFAULT_ENGINE = 'dot';
+
 const DEFAULT_FORMAT = 'svg';
 
 /* EXPORT */

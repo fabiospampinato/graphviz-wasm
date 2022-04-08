@@ -7,4 +7,4 @@ type Format = 'dot_json' | 'dot' | 'json' | 'plain-ext' | 'plain' | 'svg' | 'xdo
 
 /* EXPORT */
 
-export {Engine, Format};
+export type {Engine, Format};

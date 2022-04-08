@@ -1,7 +1,7 @@
 
 /* IMPORT */
 
-import GRAPHVIZ_BASE64 from '../graphviz/graphviz';
+import GRAPHVIZ_BASE64 from '../graphviz/graphviz.js';
 import generate from './generate';
 
 /* MAIN */

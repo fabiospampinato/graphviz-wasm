@@ -11,4 +11,4 @@ const wrapper = cpp => {
 
 /* EXPORT */
 
-module.exports.wrapper = wrapper;
+export default wrapper;
