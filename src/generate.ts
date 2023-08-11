@@ -2,7 +2,7 @@
 /* IMPORT */
 
 import decode from 'decode-base64';
-import once from 'once';
+import once from 'function-once';
 import wrapper from '../graphviz/wrapper.js';
 import {DEFAULT_ENGINE, DEFAULT_FORMAT} from './constants';
 import type {Engine, Format} from './types';
