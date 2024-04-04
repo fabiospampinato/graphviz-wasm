@@ -2,7 +2,7 @@
   "name": "graphviz-wasm",
   "repository": "github:fabiospampinato/graphviz-wasm",
   "description": "A port of Graphviz to WASM.",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "type": "module",
   "main": "dist/index.js",
   "exports": "./dist/index.js",
